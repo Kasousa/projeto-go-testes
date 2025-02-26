@@ -34,6 +34,9 @@ jobs:
         - name: Build-DB
           run: docker compose build
 
+        - name: testing echo
+          run:  echo ${{ secrets.USERNAMEDOCKERHUB }}
+
         - name: Create-DB
           run: |
                docker compose up -d
