@@ -34,9 +34,6 @@ jobs:
         - name: Build-DB
           run: docker compose build
 
-        - name: testing echo
-          run:  echo ${{ secrets.USERNAMEDOCKERHUB }}
-
         - name: Create-DB
           run: |
                docker compose up -d
@@ -50,9 +47,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
+        
         - name: Build
           run: go build -v main.go
 
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v4.6.1
+          with:
+            name: programa
+            path: main
+            
     docker:
         needs: build
         uses: ./.github/workflows/docker.yml
