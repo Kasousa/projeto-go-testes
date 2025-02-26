@@ -27,6 +27,6 @@ jobs:
           uses: docker/build-push-action@v6.15.0
           with:
             context: .
-            file: ./dockerfile
+            file: ./Dockerfile
             push: true
             tags: kquesso/go_ci:${{ github.ref_name }}
