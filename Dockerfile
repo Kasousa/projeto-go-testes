@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 EXPOSE 8000
-
+ 
 WORKDIR /app
 
 ENV HOST=localhost DBPORT=5432
