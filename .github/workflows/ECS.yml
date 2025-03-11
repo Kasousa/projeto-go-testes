@@ -38,5 +38,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: Go-Fargate-Service
-        cluster: Go-Fargate-Cluster
+        cluster: Projeto-Go-Cluster
         wait-for-service-stability: true
