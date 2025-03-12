@@ -47,9 +47,9 @@ jobs:
     - name: Requisicao 
       continue-on-error: true
       run: |
-            echo "REQUEST=0" >> &GITHUB_ENV
+            echo "REQUEST=0" >> $GITHUB_ENV
             sleep 30s
-            wget Go-Fargate-LB-387481778.sa-east-1.elb.amazonaws.com:8080/bruno || echo "REQUEST=1" >> &GITHUB_ENV 
+            wget Go-Fargate-LB-387481778.sa-east-1.elb.amazonaws.com:8080/bruno || echo "REQUEST=1" >> $GITHUB_ENV 
 
     - name: Rollback Amazon ECS task definition
       if: ${{env.REQUEST != 0}}
