@@ -46,5 +46,17 @@ jobs:
 
     - name: Requisicao 
         continue-on-error: true
-        run: sleep 30s ; wget Go-Fargate-LB-387481778.sa-east-1.elb.amazonaws.com:8080/bruno
+        run: |
+          echo "REQUEST=0" >> &GITHUB_ENV
+          sleep 30s
+          wget Go-Fargate-LB-387481778.sa-east-1.elb.amazonaws.com:8080/bruno || echo "REQUEST=1" >> &GITHUB_ENV 
+
+    - name: Rollback Amazon ECS task definition
+      if: ${{env.REQUEST != 0}}
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+      with:
+        task-definition: task-definition.json.old
+        service: Go-Fargate-Service
+        cluster: Projeto-Go-Cluster
+        wait-for-service-stability: true
         
