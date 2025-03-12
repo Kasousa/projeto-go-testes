@@ -43,3 +43,8 @@ jobs:
         service: Go-Fargate-Service
         cluster: Projeto-Go-Cluster
         wait-for-service-stability: true
+
+    - name: Requisicao 
+        continue-on-error: true
+        run: sleep 30s ; wget Go-Fargate-LB-387481778.sa-east-1.elb.amazonaws.com:8080/bruno
+        
