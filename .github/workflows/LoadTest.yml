@@ -2,7 +2,7 @@ name: Load Test
 
 on:
   workflow_call:
-
+ 
 jobs:
 
   loadtest:
