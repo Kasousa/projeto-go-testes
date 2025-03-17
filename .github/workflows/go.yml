@@ -72,7 +72,10 @@ jobs:
         uses: ./.github/workflows/ECS.yml
         secrets: inherit
 
-
+    LoadTest:
+        needs: Deploy_ECS
+        uses: ./.github/workflows/LoadTest.yml
+        secrets: inherit
 
 
 
